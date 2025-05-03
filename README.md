@@ -19,6 +19,10 @@ To run this project, you’ll need to have the following installed:
 **To Install Dependencies**:
 pip install -r requirements.txt
 
+**To Run**
+- If using a virtual environment, use "flask run"
+- Otherwise, run moviedirary.py in IDE 
+
 
 ## Project Structure
 movie-diary/
