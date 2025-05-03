@@ -22,6 +22,7 @@ pip install -r requirements.txt
 
 ## Project Structure
 movie-diary/
+
 ├── app.py                  # Main Flask app
 
 ├── models.py               # SQLAlchemy models
@@ -29,8 +30,11 @@ movie-diary/
 ├── templates/              # HTML templates
 
 ├── static/
+
 │   └── style.css           # CSS styling
+
 ├── requirements.txt        # List of dependencies
+
 └── README.md
 
 ## Tech Stack
