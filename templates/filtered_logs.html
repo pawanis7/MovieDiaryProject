@@ -1,0 +1,89 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <a href="{{ url_for('index') }}">Back to Home</a>
+    <h2>Filter Movie Logs</h2>
+    <form action="/filter_logs" method="POST">
+        <!-- Genre Dropdown -->
+        <label for="genre">Genre:</label>
+        <select name="genre" id="genre">
+            <option value="">Select Genre</option>
+            {% for genre in genres %}
+                <option value="{{ genre }}">{{ genre }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <!-- Director Dropdown -->
+        <label for="director">Director:</label>
+        <select name="director" id="director">
+            <option value="">Select Director</option>
+            {% for director in directors %}
+                <option value="{{ director }}">{{ director }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <!-- Year Dropdown -->
+        <label for="year">Year:</label>
+        <select name="year" id="year">
+            <option value="">Select Year</option>
+            {% for year in years %}
+                <option value="{{ year }}">{{ year }}</option>
+            {% endfor %}
+        </select><br><br>
+
+        <!-- Rating Range -->
+        <label for="rating_min">Rating Min:</label>
+        <input type="number" name="rating_min" id="rating_min" min="1" max="10" step="1"><br><br>
+        <label for="rating_max">Rating Max:</label>
+        <input type="number" name="rating_max" id="rating_max" min="1" max="10" step="1"><br><br>
+
+        <!-- Date Range -->
+        <label for="date_min">Date Min:</label>
+        <input type="date" name="date_min" id="date_min"><br><br>
+        <label for="date_max">Date Max:</label>
+        <input type="date" name="date_max" id="date_max"><br><br>
+
+        <!-- Favorite Checkbox -->
+        <label for="favorite">Favorite:</label>
+        <input type="checkbox" name="favorite" id="favorite" value="true"><br><br>
+
+        <button type="submit">Filter Logs</button>
+    </form>
+
+    <h2>Your Movie Logs</h2>
+    {% if logs %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Movie Title</th>
+                <th>Year</th>
+                <th>Genre</th>
+                <th>Director</th>
+                <th>Description</th>
+                <th>Rating</th>
+                <th>Review</th>
+                <th>Favorite</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.movie.title }}</td>
+                <td>{{ log.movie.year }}</td>
+                <td>{{ log.movie.genre }}</td>
+                <td>{{ log.movie.director }}</td>
+                <td>{{ log.movie.description }}</td>
+                <td>{{ log['rating'] }}</td>
+                <td>{{ log['review'] }}</td>
+                <td>{% if log['favorite'] %} Yes {% else %} No {% endif %}</td>
+                
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No logs found.</p>
+    {% endif %}
+</body>
+{% endblock %}

@@ -1,0 +1,44 @@
+# Movie Diary Web App
+
+A simple Flask-based web application to log, filter, and edit your movie-watching history. Users can rate movies, write reviews, mark favorites, and filter their logs by genre, director, year, and more.
+
+## Features
+
+- Add, edit, and delete movie logs
+- Filter logs by various criteria
+- Track ratings, reviews, and favorites
+- Edit shared movie metadata (title, genre, year, etc.)
+
+## Requirements
+
+To run this project, you’ll need to have the following installed:
+
+- Python 3.7+
+- `pip` (Python package manager)
+
+**To Install Dependencies**:
+pip install -r requirements.txt
+
+
+## Project Structure
+movie-diary/
+├── app.py                  # Main Flask app
+├── models.py               # SQLAlchemy models
+├── templates/              # HTML templates
+├── static/
+│   └── style.css           # CSS styling
+├── requirements.txt        # List of dependencies
+└── README.md
+
+## Tech Stack
+Python – Core programming language used to build the backend logic.
+
+Flask – Web framework used to create the web application and manage routing, views, and templates.
+
+Flask-SQLAlchemy – ORM (Object-Relational Mapping) tool used for database interactions in an intuitive Pythonic way.
+
+SQLite – File-based relational database used for storing users’ logs and movie information.
+
+Jinja2 – Templating engine (built into Flask) used to render dynamic HTML pages.
+
+HTML/CSS – Frontend technologies used to design the simple, intuitive user interface.

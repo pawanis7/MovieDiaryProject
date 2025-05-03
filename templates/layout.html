@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Diary</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="{{ page_class | default('') }}">
+    <header>
+        <h1>Movie Diary</h1>
+        <nav>
+            <a href="/add">Add Log</a>
+            <a href="/filter_logs">Filter Logs</a>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+    <h2>Your Movie Logs</h2>
+    {% if logs %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Movie Title</th>
+                <th>Rating</th>
+                <th>Review</th>
+                <th>Favorite</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+            <tr>
+                <td>{{ log.movie.title }}</td>
+                <td>{{ log.rating }}</td>
+                <td>{{ log.review }}</td>
+                <td>{% if log.favorite %} Yes {% else %} No {% endif %}</td>
+                <td>
+                    <form action="{{ url_for('edit_log', id=log.logID) }}" method="get" style="display:inline;">
+                        <button type="submit">Edit</button>
+                    </form>
+                    <form action="{{ url_for('delete_log', id=log.logID) }}" method="post" style="display:inline;">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No logs found.</p>
+    {% endif %}
+
+    <h2>Movies</h2>
+    {% if movies %}
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Year</th>
+                <th>Genre</th>
+                <th>Director</th>
+                <th>Description</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for movie in movies %}
+            <tr>
+                <td><strong>{{ movie.title }}</strong></td>
+                <td>{{ movie.year }}</td>
+                <td>{{ movie.genre }}</td>
+                <td>{{ movie.director }}</td>
+                <td>{{ movie.description }}</td>
+                <td>
+                    <form action="{{ url_for('edit_movie', id=movie.movieID) }}" method="get" style="display:inline;">
+                        <button type="submit">Edit</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No movies found.</p>
+    {% endif %}
+    
+{% endblock %}
